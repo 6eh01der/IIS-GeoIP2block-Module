@@ -12,7 +12,7 @@ Remote installation example:
 
 Example of module configuration for every site on server via powershell:
 
-    $Sites = (Get-IISite).Name
+    $Sites = (Get-IISSite).Name
     Foreach ($site in $sites) {
     Set-WebConfigurationProperty //geoblockModule -name geoIpFilepath -value C:\MaxMind\GeoIP2Lite\GeoLite2-Country.mmdb -PSPath "iis:sites/$site"
     Set-WebConfigurationProperty //geoblockModule -name DenyAction -value Abort -PSPath "iis:sites/$site"
