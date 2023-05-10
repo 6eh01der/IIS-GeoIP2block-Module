@@ -1,17 +1,17 @@
 Local installation example:
-
+```powershell
     IISGeoBlockInstall.ps1 "2.4.1.0" "C:\Program Files\IIS"
-    
+```    
 Remote installation example:
-
+```powershell
     Invoke-Command -ComputerName ru2-v001-web01 {
         Invoke-WebRequest https://github.com/6eh01der/IIS-GeoIP2block-Module/raw/master/InstallScripts/IISGeoBlockInstall.ps1 -OutFile IISGeoBlockInstall.ps1
         .\IISGeoBlockInstall.ps1 "2.4.1.0" "C:\Program Files\IIS"
         Remove-Item IISGeoBlockInstall.ps1 -Force
     }
-
+```
 Example of module configuration for every site on server via powershell:
-
+```powershell
     $Sites = (Get-IISSite).Name
     Foreach ($site in $sites) {
     Set-WebConfigurationProperty //geoblockModule -name geoIpFilepath -value C:\MaxMind\GeoIP2Lite\GeoLite2-Country.mmdb -PSPath "iis:sites/$site"
@@ -20,4 +20,5 @@ Example of module configuration for every site on server via powershell:
     Set-WebConfigurationProperty //geoblockModule -name allowedMode -value False -PSPath "iis:sites/$site"
     Set-WebConfigurationProperty //geoblockModule -name enabled -value True -PSPath "iis:sites/$site"
     }
+```
 where CountryCode is two letters.
