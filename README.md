@@ -27,7 +27,9 @@ https://sourceforge.net/projects/iis7geoblockmod/
 
 If above files are not in C:\Windows\System32\inetsrv\
 For IIS 8 and up, you could run this command to enable the IIS Management tools:
-```powershellDism /online /Enable-Feature /FeatureName:IIS-WebServerManagementTools /All```
+```powershell
+Dism /online /Enable-Feature /FeatureName:IIS-WebServerManagementTools /All
+```
 Or you could add the "IIS Management Console" through installing Windows Features -> Internet Information Services ->IIS Management Console.
 
 # Installation instructions
