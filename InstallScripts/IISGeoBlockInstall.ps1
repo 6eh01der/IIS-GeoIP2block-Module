@@ -23,4 +23,5 @@ add-webconfigurationproperty /system.webserver -name Sections -value geoblockMod
 set-webconfigurationproperty /system.webserver -name Sections["geoblockModule"].overrideModeDefault -value Allow
 New-WebManagedModule -Name "Geoblocker" -Type "IISGeoIP2blockModule.GeoblockHttpModule, IISGeoIP2blockModule, Version=$ReleaseVersion, Culture=neutral, PublicKeyToken=50262f380b75b73d" -Precondition "runtimeVersionv4.0"
 ."${env:windir}\Temp\IISManagerGeoBlockReg.vbs" "$ReleaseVersion"
+Start-sleep -Seconds 5
 Remove-Item ${env:windir}\Temp\IIS-GeoIP2block-Module-$ReleaseVersion.zip,${env:windir}\Temp\IISManagerGeoBlockReg.vbs -Force
